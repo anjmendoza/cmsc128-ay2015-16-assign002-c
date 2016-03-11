@@ -5,7 +5,6 @@ Programming Assignment
 */
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 #include <stdbool.h>
 
 //function declaration
@@ -192,3 +191,10 @@ int getMinSkewN(char *str, int n){
 		return 0;
 	}
 }	//end of function #6
+
+
+/*Sources:
+- http://www.tutorialspoint.com/ansi_c/c_function_references.htm
+- http://stackoverflow.com/questions/14445705/passing-a-string-literal-as-a-function-parameter-defined-as-a-pointer
+- http://stackoverflow.com/questions/17307275/what-is-the-printf-format-specifier-for-bool
+*/
