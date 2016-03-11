@@ -13,26 +13,11 @@ int getHammingDistance(char *, char *);
 int countSubstrPattern(char *, char *);
 bool isValidString(char *, char *);
 int getSkew(char *, int n);
-int getMaxSkew(char *, int n);
-int getMinSkew(char *, int n);
+int getMaxSkewN(char *, int n);
+int getMinSkewN(char *, int n);
 
 //main function
 int main(){
-	int ret=0;
-	bool validString;
-	char str1[15];
-	char str2[15];
-	strcpy(str1, "GGCCAC");
-	strcpy(str2, "ACGT");
-	//toUpperCase(str1);
-	//toUpperCase(str2);
-	printf("%s\n",str1);
-	printf("%s\n",str2);
-	//ret=getHammingDistance(str1,str2);
-	//ret=countSubstrPattern(str1,str2);
-	//validString=isValidString(str1,str2);
-	ret=getMaxSkew(str1,7);
-	printf("%d\n",ret);
 }
 
 /*function #1
@@ -51,7 +36,6 @@ int getHammingDistance(char *str1, char *str2){
 			if(str1[ctr]!=str2[ctr]) diff++;
 			ctr++;
 		}
-		printf("%d\n", diff);
 		return diff;
 	}
 	//else it will print an error
@@ -99,27 +83,20 @@ checks if the chacters in a string is based on the given set of alphabet; return
 bool isValidString(char *str, char *alphabet){
 	int ctr=0;
 
-	/*checks first if the length of the string is greater than or equal to the
-	length of the alphabet. If alphabet's length is greater than strings' length, 
-	all characters on it was not used in the original string*/
-	if(strlen(str) >= strlen(alphabet)){
-		//for-loop to access all characters in the string
-		for(int i=0; i<strlen(str); i++){
-			//for-loop to check each character in the alphabet if current character of string matches any of it
-			for(int j=0;j<strlen(alphabet);j++){
-				//if yes, counter for checking later will increment
-				if(str[i]==alphabet[j]) ctr++;
-			}
+	//for-loop to access all characters in the string
+	for(int i=0; i<strlen(str); i++){
+		//for-loop to check each character in the alphabet if current character of string matches any of it
+		for(int j=0;j<strlen(alphabet);j++){
+			//if yes, counter for checking later will increment
+			if(str[i]==alphabet[j]) ctr++;
 		}
-		/*checks if the value of the counter is equal to the length of the string. if yes, then all of the string's 
-		character is valid*/
-		if(ctr==strlen(str)){
-			return true; //will return true and when printed will print a 1
-		}else{
-			return false; //will return false and when printed will print a 0
-		}
+	}
+	/*checks if the value of the counter is equal to the length of the string. if yes, then all of the string's 
+	character is valid*/
+	if(ctr==strlen(str)){
+		return true; //will return true and when printed will print a 1
 	}else{
-		return false;
+		return false; //will return false and when printed will print a 0
 	}
 }	//end of function #3
 
@@ -153,7 +130,7 @@ int getSkew(char *str, int n){
 /* function #5
 gets the skew in each position until N is reached and gets the maximum among all of it
 */
-int getMaxSkew(char *str, int n){
+int getMaxSkewN(char *str, int n){
 	//counter variables
 	int ctrG=0;
 	int ctrC=0;
@@ -191,7 +168,7 @@ int getMaxSkew(char *str, int n){
 /* function #6
 same with the prvious function, function#5, however, it returns the minimum value of skew
 */
-int getMinSkew(char *str, int n){
+int getMinSkewN(char *str, int n){
 	int ctrG=0;
 	int ctrC=0;
 	int answer=0;
